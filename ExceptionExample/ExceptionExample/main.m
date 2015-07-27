@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-int main(int argc, const char * argv[])
-{
+int main(int argc, const char * argv[]) {
 
     @autoreleasepool {
         
-        // insert code here...
-        NSLog(@"Hello, World!");
-        
+
+        @try {
+            id today = [[NSDate alloc]init];
+            [today uppercaseString];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"We found an exception - and handled it.");
+            NSLog(@"It was: %@", exception);
+        }
+        @finally {
+            NSLog(@"We're still here!");
+        }
     }
     return 0;
 }
